@@ -39,9 +39,7 @@ db.authenticate()
   .then(() =>
     console.log("Connection to the Postgres DB was successfully established! ")
   )
-  .catch((err) =>
-    console.log(`Error occurred: ` + process.env.PG_PASSWORD + err)
-  );
+  .catch((err) => console.log(`Error occurred: ` + err));
 
 // callback function that called after server starts listening for requests
 const serverStart = () => console.log(`Server listening on ${PORT}`);

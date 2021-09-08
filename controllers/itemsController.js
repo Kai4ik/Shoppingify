@@ -7,7 +7,7 @@ exports.getAllItems = async (req, res) => {
     return res.status(200).json(items);
   } catch (err) {
     return res.status(500).json({
-      error: `Error occurred: ${process.env.PG_PASSWORD} ${err}`,
+      error: `Error occurred: --- ${process.env.PG_PASSWORD} --- ${err}`,
     });
   }
 };
