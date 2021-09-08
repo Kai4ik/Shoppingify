@@ -71,7 +71,7 @@ export default function ItemDetails() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/users", {
+      .get("/api/users", {
         headers: {
           Authorization: Cookies.get("token"),
         },

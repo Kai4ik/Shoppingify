@@ -277,7 +277,7 @@ export default function ShoppingList() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/users", {
+      .get("/api/users", {
         headers: {
           Authorization: Cookies.get("token"),
         },
@@ -290,7 +290,7 @@ export default function ShoppingList() {
 
   useUpdateEffect(() => {
     axios({
-      url: "http://localhost:5000/api/users/verifyAndUpdate",
+      url: "/api/users/verifyAndUpdate",
       method: "post",
       data: {
         listProducts: products,
@@ -304,7 +304,7 @@ export default function ShoppingList() {
 
   useUpdateEffect(() => {
     axios({
-      url: "http://localhost:5000/api/users/verifyAndUpdate",
+      url: "/api/users/verifyAndUpdate",
       method: "post",
       data: {
         allUserLists: allLists,

@@ -156,13 +156,11 @@ export default function AddItem() {
         newItemData.category === "" ? false : true;
       setDataStatus(tempDataStatus);
     } else {
-      axios
-        .post("http://localhost:5000/api/items", newItemData)
-        .then((response) => {
-          if (response.data.success) dispatch(addNewProduct(newItemData));
-          if (categories.indexOf(newItemData.category) === -1)
-            dispatch(addNewCategory(newItemData.category));
-        });
+      axios.post("/api/items", newItemData).then((response) => {
+        if (response.data.success) dispatch(addNewProduct(newItemData));
+        if (categories.indexOf(newItemData.category) === -1)
+          dispatch(addNewCategory(newItemData.category));
+      });
       dispatch(
         width > 768
           ? setCurrentSection("shoppingList")
