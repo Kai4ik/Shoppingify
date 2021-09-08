@@ -6,9 +6,9 @@
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
-    "build": "run dev",
     "client": "npm start --prefix shoppingify",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "cd shoppingify && npm install && npm run build"
   },
   "author": "Kairat Orozobekov",
   "license": "ISC",
