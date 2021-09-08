@@ -4,8 +4,8 @@
   "description": "PERN application",
   "main": "server.js",
   "scripts": {
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix shoppingify && npm run build --prefix shoppingify",
-    "start": "node server.js"
+    "start": "node server.js",
+    "heroku-postbuild": "cd shoppingify && npm install --only=dev && npm install && npm run build"
   },
   "author": "Kairat Orozobekov",
   "license": "ISC",
