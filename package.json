@@ -4,12 +4,8 @@
   "description": "PERN application",
   "main": "server.js",
   "scripts": {
-    "build": "cd shoppingify && npm run build",
-    "install-client": "cd shoppingify && npm install",
-    "server": "nodemon server",
-    "dev": "concurrently \"npm run server\"",
-    "heroku-postbuild": "npm run install-client && npm run build",
-    "start": "concurrently \"npm run server\""
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix shoppingify && npm run build --prefix shoppingify",
+    "start": "node server.js"
   },
   "author": "Kairat Orozobekov",
   "license": "ISC",
