@@ -276,7 +276,6 @@ export default function ShoppingList() {
   };
 
   useEffect(() => {
-    console.log("ty debil X1");
     axios
       .get("api/users", {
         headers: {
@@ -291,7 +290,6 @@ export default function ShoppingList() {
   }, []);
 
   useUpdateEffect(() => {
-    console.log("ty debil X2");
     axios({
       url: "api/users/verifyAndUpdate",
       method: "post",
