@@ -8,6 +8,4 @@ const Item = db.define("Items", {
   category: DataTypes.STRING(60),
 });
 
-Item.sync({ force: true });
-
 module.exports = Item;
