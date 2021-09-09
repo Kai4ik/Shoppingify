@@ -290,6 +290,7 @@ export default function ShoppingList() {
   }, []);
 
   useUpdateEffect(() => {
+    console.log("ty debil");
     axios({
       url: "api/users/verifyAndUpdate",
       method: "post",
