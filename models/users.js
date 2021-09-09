@@ -15,6 +15,20 @@ User.sync({ force: true }).then(() => {
     currentListProducts: [],
     allUserLists: [],
   });
+
+  User.create({
+    userEmail: "kai@",
+    userPassword: "ggdgfdf",
+    currentListProducts: [],
+    allUserLists: [],
+  });
+
+  User.create({
+    userEmail: "kai4ik@",
+    userPassword: "ggdfgd",
+    currentListProducts: [],
+    allUserLists: [],
+  });
 });
 
 module.exports = User;
