@@ -8,4 +8,13 @@ const User = db.define("Users", {
   allUserLists: DataTypes.ARRAY(DataTypes.JSON),
 });
 
+User.sync({ force: true }).then(() => {
+  User.create({
+    userEmail: "ka@",
+    userPassword: "gg",
+    currentListProducts: [],
+    allUserLists: [],
+  });
+});
+
 module.exports = User;
