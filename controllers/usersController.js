@@ -135,12 +135,13 @@ exports.verifyAndUpdateUser = async (req, res) => {
 exports.getCurrentListProducts = async (req, res) => {
   try {
     const decoded = verifyToken(req, res);
-    await verifyEmail(decoded, res).then((response) => {
-      console.log(response);
-      return res.status(200).json({
-        success: true,
-        listProducts: response.currentListProducts,
-      });
+    const findUserWithGivenEmail = await User.findOne({
+      where: { userEmail: decoded.email },
+    });
+    console.log(findUserWithGivenEmail);
+    return res.status(200).json({
+      success: true,
+      listProducts: findUserWithGivenEmail.currentListProducts,
     });
   } catch (err) {
     return res.status(500).json({
