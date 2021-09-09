@@ -98,7 +98,6 @@ exports.loginUser = async (req, res) => {
 exports.verifyAndUpdateUser = async (req, res) => {
   try {
     const decoded = verifyToken(req, res);
-    console.log(decoded.email);
     if (req.body.listProducts) {
       await User.update(
         {
@@ -138,6 +137,7 @@ exports.getCurrentListProducts = async (req, res) => {
     const decoded = verifyToken(req, res);
     let user = null;
     await verifyEmail(decoded, res).then((response) => (user = response));
+    console.log(user);
     return res.status(200).json({
       success: true,
       listProducts: user.currentListProducts,
