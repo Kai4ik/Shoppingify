@@ -139,8 +139,7 @@ exports.getCurrentListProducts = async (req, res) => {
       where: { userEmail: decoded.email },
     });
     return res.status(200).json({
-      req: req,
-      decoded: decoded,
+      req: "gg",
       success: true,
       listProducts: findUserWithGivenEmail.currentListProducts,
     });
