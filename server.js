@@ -14,7 +14,7 @@ const jsonParser = express.json();
 //configuring cors
 app.use(
   cors({
-    origin: "https://shoppingifyapp.herokuapp.com/",
+    origin: "*",
     methods: "GET, POST, DELETE",
     allowedHeaders: "Authorization, Content-Type",
   })
