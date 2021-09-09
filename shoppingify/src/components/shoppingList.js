@@ -282,9 +282,10 @@ export default function ShoppingList() {
           Authorization: Cookies.get("token"),
         },
       })
-      .then((response) =>
-        dispatch(populateListWithData(response.data.listProducts))
-      );
+      .then((response) => {
+        console.log(response.data);
+        dispatch(populateListWithData(response.data.listProducts));
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

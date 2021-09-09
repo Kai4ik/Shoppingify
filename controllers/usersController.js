@@ -98,7 +98,6 @@ exports.loginUser = async (req, res) => {
 exports.verifyAndUpdateUser = async (req, res) => {
   try {
     const decoded = verifyToken(req, res);
-    console.log(req.body.listProducts);
     if (req.body.listProducts) {
       await User.update(
         {
