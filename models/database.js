@@ -10,6 +10,9 @@ const db = new Sequelize(
     host: "ec2-54-173-138-144.compute-1.amazonaws.com",
     port: 5432,
     dialect: "postgres",
+    dialectOptions: {
+      ssl: true,
+    },
     pool: {
       max: 5,
       min: 0,
