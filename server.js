@@ -14,7 +14,7 @@ const jsonParser = express.json();
 //configuring cors
 app.use(
   cors({
-    origin: "https://localhost:3000",
+    origin: "http://localhost:3000",
     methods: "GET, POST, DELETE",
     allowedHeaders: "Authorization, Content-Type",
   })
