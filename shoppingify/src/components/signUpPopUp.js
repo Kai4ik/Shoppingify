@@ -55,7 +55,7 @@ export default function SignUpPopUp(props) {
           currentListProducts: [],
         };
         axios
-          .post("http://localhost:5000/api/users", newUser)
+          .post("https://shoppingifyapp.herokuapp.com/api/users", newUser)
           .then((response) => {
             if (response.data.created) {
               dispatch({
