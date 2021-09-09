@@ -54,20 +54,18 @@ export default function SignUpPopUp(props) {
           allUserLists: [],
           currentListProducts: [],
         };
-        axios
-          .post("https://shoppingifyapp.herokuapp.com/api/users", newUser)
-          .then((response) => {
-            if (response.data.created) {
-              dispatch({
-                type: "CREATE_USER",
-                payload: newUser,
-              });
-              props.setSignUpMode(false);
-              Cookies.set("token", response.data.token, { expires: 0.125 });
-            } else {
-              setEmailError(false);
-            }
-          });
+        axios.post("api/users", newUser).then((response) => {
+          if (response.data.created) {
+            dispatch({
+              type: "CREATE_USER",
+              payload: newUser,
+            });
+            props.setSignUpMode(false);
+            Cookies.set("token", response.data.token, { expires: 0.125 });
+          } else {
+            setEmailError(false);
+          }
+        });
       }
     }
   };

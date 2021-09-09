@@ -71,7 +71,7 @@ export default function ItemDetails() {
 
   useEffect(() => {
     axios
-      .get("/api/users", {
+      .get("api/users", {
         headers: {
           Authorization: Cookies.get("token"),
         },

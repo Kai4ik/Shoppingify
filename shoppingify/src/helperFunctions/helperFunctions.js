@@ -33,7 +33,7 @@ export const countTotalItems = (arrayOfElements) => {
 
 export const populateAllHistoryLists = (dispatch) => {
   axios
-    .get("http://localhost:5000/api/users/historyLists", {
+    .get("api/users/historyLists", {
       headers: {
         Authorization: Cookies.get("token"),
       },
@@ -45,7 +45,7 @@ export const populateAllHistoryLists = (dispatch) => {
 
 export const updateUser = (listProducts) => {
   axios({
-    url: "http://localhost:5000/api/users/verifyAndUpdate",
+    url: "api/users/verifyAndUpdate",
     method: "post",
     data: {
       listProducts: listProducts,

@@ -42,19 +42,17 @@ export default function LoginPopUp(props) {
 
   const login = () => {
     if (formData.email !== "" && formData.password !== "") {
-      axios
-        .post("http://localhost:5000/api/users/login", formData)
-        .then((response) => {
-          if (response.data.loggedIn) {
-            dispatch({
-              type: "LOGIN_USER",
-              payload: response.data.user,
-            });
-            props.setLoginMode(false);
-            Cookies.set("token", response.data.token, { expires: 0.125 });
-          } else {
-          }
-        });
+      axios.post("api/users/login", formData).then((response) => {
+        if (response.data.loggedIn) {
+          dispatch({
+            type: "LOGIN_USER",
+            payload: response.data.user,
+          });
+          props.setLoginMode(false);
+          Cookies.set("token", response.data.token, { expires: 0.125 });
+        } else {
+        }
+      });
     }
   };
 

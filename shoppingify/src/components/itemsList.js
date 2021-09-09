@@ -138,16 +138,14 @@ export default function ItemsList() {
 
   useEffect(() => {
     const populateNewCategories = [];
-    axios
-      .get("https://shoppingifyapp.herokuapp.com/api/items")
-      .then((response) => {
-        dispatch(populateProductsData(response.data));
-        response.data.map((product) => {
-          if (populateNewCategories.indexOf(product.category) === -1)
-            populateNewCategories.push(product.category);
-        });
-        dispatch(populateCategories(populateNewCategories));
+    axios.get("api/items").then((response) => {
+      dispatch(populateProductsData(response.data));
+      response.data.map((product) => {
+        if (populateNewCategories.indexOf(product.category) === -1)
+          populateNewCategories.push(product.category);
       });
+      dispatch(populateCategories(populateNewCategories));
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
