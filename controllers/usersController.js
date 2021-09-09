@@ -137,7 +137,7 @@ exports.getCurrentListProducts = async (req, res) => {
     const decoded = verifyToken(req, res);
     let user = null;
     await verifyEmail(decoded, res).then((response) => (user = response));
-    console.log(user);
+    console.log("user" + user);
     return res.status(200).json({
       success: true,
       listProducts: user.currentListProducts,
