@@ -5,7 +5,13 @@ const db = new Sequelize(process.env.DATABASE_URL, {
   host: "localhost",
   dialect: "postgres",
   port: 5432,
-  logging: true,
+  protocol: "postgres",
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  },
 });
 
 module.exports = db;
