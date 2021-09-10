@@ -202,8 +202,10 @@ export const ErrorMessage = styled.p`
 `;
 
 export const NoPreviousLists = styled.div`
+  height: 100%;
   display: flex;
+  justify-content: center;
   align-items: center;
   font-size: 1.6rem;
-  margin-top: 15vh;
+  font-weight: 700;
 `;
