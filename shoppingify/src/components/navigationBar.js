@@ -70,8 +70,10 @@ const MenuOption = styled.span`
   outline: none;
 
   @media (hover: hover) {
-    border-left: 10px solid #f9a109;
-    ${Tooltip} {
+    &:hover {
+      border-left: 10px solid #f9a109;
+    }
+    &:hover ${Tooltip} {
       visibility: visible;
     }
   }
