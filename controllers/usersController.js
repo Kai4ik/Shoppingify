@@ -29,7 +29,7 @@ const verifyEmail = async (decoded, res) => {
 
   if (!findUserWithGivenEmail)
     return res.status(200).json({
-      error: "User with such email does not exist!",
+      emailError: "User with such email does not exist!",
       success: false,
     });
   return findUserWithGivenEmail;
@@ -91,7 +91,7 @@ exports.loginUser = async (req, res) => {
           });
         } else
           return res.status(200).json({
-            error: "Incorrect password",
+            passwordError: "Incorrect password",
             success: false,
           });
       });

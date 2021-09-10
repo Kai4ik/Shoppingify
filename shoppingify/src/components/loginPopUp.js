@@ -18,6 +18,7 @@ import Cookies from "js-cookie";
 export default function LoginPopUp(props) {
   const dispatch = useDispatch();
   const [emailError, setEmailError] = useState(true);
+  const [passwordError, setPasswordError] = useState(true);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -49,6 +50,8 @@ export default function LoginPopUp(props) {
           props.setLoginMode(false);
           Cookies.set("token", response.data.token, { expires: 0.125 });
         } else {
+          if (response.data.emailError) setEmailError(false);
+          if (response.data.passwordError) setPasswordError(false);
         }
       });
     }
@@ -88,6 +91,9 @@ export default function LoginPopUp(props) {
             placeholder="Password"
             autoComplete="off"
           />
+          <ErrorMessage showError={passwordError}>
+            Provided password is incorrect!
+          </ErrorMessage>
         </FormField>
         <SubmitButton makeClickable={readyToLogin} onClick={() => login()}>
           Login

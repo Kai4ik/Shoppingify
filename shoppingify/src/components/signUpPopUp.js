@@ -65,6 +65,8 @@ export default function SignUpPopUp(props) {
           }
         });
       }
+    } else {
+      setEmailError(false);
     }
   };
 
