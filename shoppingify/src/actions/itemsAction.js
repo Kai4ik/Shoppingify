@@ -12,6 +12,7 @@ export const populateCategories = (categories) => {
   };
 };
 
+// used to populate items with initial data fetched from database
 export const populateProductsData = (products) => {
   return {
     type: "POPULATE_PRODUCTS_WITH_DB_DATA",

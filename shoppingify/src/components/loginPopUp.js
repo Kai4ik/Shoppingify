@@ -10,6 +10,7 @@ import {
   SubmitButton,
   ErrorMessage,
 } from "./reusableElements";
+import { loginUser } from "../actions/userActions";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -44,10 +45,7 @@ export default function LoginPopUp(props) {
     if (formData.email !== "" && formData.password !== "") {
       axios.post("api/users/login", formData).then((response) => {
         if (response.data.loggedIn) {
-          dispatch({
-            type: "LOGIN_USER",
-            payload: response.data.user,
-          });
+          dispatch(loginUser(response.data.user));
           props.setLoginMode(false);
           Cookies.set("token", response.data.token, { expires: 0.125 });
         } else {

@@ -4,6 +4,8 @@ const bcrypt = require("bcrypt");
 
 require("dotenv").config();
 
+// verifyToken() used to check whether provided token (taken from Authorization header) is valid (was it changed) or not.
+// returns the decoded payload that contains user email
 const verifyToken = (req, res) => {
   const token = req.headers["authorization"];
   if (!token)
@@ -18,6 +20,8 @@ const verifyToken = (req, res) => {
   }
 };
 
+// verifyEmail() used to check whether user with provided email exists in database or not.
+// returns user object in case it finds one, otherwise returns error
 const verifyEmail = async (decoded, res) => {
   const findUserWithGivenEmail = await User.findOne({
     where: { userEmail: decoded.email },
@@ -38,6 +42,9 @@ const createToken = (email) => {
   });
 };
 
+// addNewUser() used to create a new user using given in request information
+// provided by user password hashed using "bcrypt" package
+// function also generates a new jwt token and returns it back to the client
 exports.addNewUser = async (req, res) => {
   try {
     const findUserWithGivenEmail = await User.findAll({
@@ -95,6 +102,8 @@ exports.loginUser = async (req, res) => {
   }
 };
 
+// verifyAndUpdateUser() used to update user - list products or user lists
+// before updating user, function checks whether valid token was provided or not
 exports.verifyAndUpdateUser = async (req, res) => {
   try {
     const decoded = verifyToken(req, res);
@@ -132,6 +141,7 @@ exports.verifyAndUpdateUser = async (req, res) => {
   }
 };
 
+// function that returns all products from user's current list
 exports.getCurrentListProducts = async (req, res) => {
   try {
     const decoded = verifyToken(req, res);
@@ -149,6 +159,7 @@ exports.getCurrentListProducts = async (req, res) => {
   }
 };
 
+// function that returns all user's previously saved lists
 exports.getAllLists = async (req, res) => {
   try {
     const decoded = verifyToken(req, res);

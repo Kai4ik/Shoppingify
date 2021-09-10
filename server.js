@@ -19,6 +19,7 @@ app.use(
   })
 );
 
+//routes
 const items = require("./routes/items");
 app.use("/api/items", jsonParser, items);
 
@@ -28,6 +29,7 @@ app.use("/api/users", jsonParser, users);
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("shoppingify/build"));
 }
+
 //testing the database connection
 db.authenticate()
   .then(() =>

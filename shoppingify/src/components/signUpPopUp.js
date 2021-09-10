@@ -13,6 +13,7 @@ import {
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { createUser } from "../actions/userActions";
 
 export default function SignUpPopUp(props) {
   const dispatch = useDispatch();
@@ -56,10 +57,7 @@ export default function SignUpPopUp(props) {
         };
         axios.post("api/users", newUser).then((response) => {
           if (response.data.created) {
-            dispatch({
-              type: "CREATE_USER",
-              payload: newUser,
-            });
+            dispatch(createUser(newUser));
             props.setSignUpMode(false);
             Cookies.set("token", response.data.token, { expires: 0.125 });
           } else {
