@@ -6,13 +6,13 @@ const db = new Sequelize(
   {
     port: 5432,
     dialect: "postgres",
-    /* protocol: "postgres",
+    protocol: "postgres",
     dialectOptions: {
       ssl: {
         require: true,
         rejectUnauthorized: false,
       },
-    },*/
+    },
   }
 );
 
