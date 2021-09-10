@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { MainSection } from "./reusableElements";
+import { MainSection, NoPreviousLists } from "./reusableElements";
 import {
   countTotalItems,
   findRequiredProductIndex,
@@ -239,69 +239,79 @@ export default function Statistics() {
 
   return (
     <MainSection>
-      <TopStatistics>
-        <TopRanges>
-          <TopSection>
-            <TopTitle>Top Items</TopTitle>
-            {totalItemRatioInPercentages
-              .slice(0, 3)
-              .sort(sortDescendant)
-              .map((item) => (
-                <div key={`${item.itemName}ID`}>
-                  <ItemSection>
-                    <ItemLabel htmlFor={item.itemName}>
-                      {item.itemName}
-                    </ItemLabel>
-                    <Percentage> {item.percentage} %</Percentage>
-                  </ItemSection>
-                  <Range
-                    rangeColor="#f9a109"
-                    name={item.itemName}
-                    value={item.percentage}
-                    readOnly
-                  ></Range>
-                </div>
-              ))}
-          </TopSection>
-          <TopSection>
-            <TopTitle> Top Categories</TopTitle>
-            {totalCategoryRatioInPercentages
-              .slice(0, 3)
-              .sort(sortDescendant)
-              .map((item) => (
-                <div key={`${item.category}ID`}>
-                  <ItemSection>
-                    <ItemLabel htmlFor={item.category}>
-                      {item.category}
-                    </ItemLabel>
-                    <Percentage> {item.percentage} %</Percentage>
-                  </ItemSection>
-                  <Range
-                    rangeColor="#56CCF2"
-                    name={item.category}
-                    value={item.percentage}
-                    readOnly
-                  ></Range>
-                </div>
-              ))}
-          </TopSection>
-        </TopRanges>
-        <MonthlyChart>
-          <MonthlySummary> Monthly Summary </MonthlySummary>
-          <ResponsiveContainer width="100%" height={300}>
-            <LineChart
-              data={data}
-              margin={{ top: 5, right: 50, bottom: 0, left: -30 }}
-            >
-              <Line type="monotone" dataKey="numberOfItems" stroke="#F9A109" />
-              <CartesianGrid stroke="#E0E0E0" strokeDasharray="5 5" />
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-            </LineChart>
-          </ResponsiveContainer>
-        </MonthlyChart>
-      </TopStatistics>
+      {allLists.length > 0 ? (
+        <TopStatistics>
+          <TopRanges>
+            <TopSection>
+              <TopTitle>Top Items</TopTitle>
+              {totalItemRatioInPercentages
+                .slice(0, 3)
+                .sort(sortDescendant)
+                .map((item) => (
+                  <div key={`${item.itemName}ID`}>
+                    <ItemSection>
+                      <ItemLabel htmlFor={item.itemName}>
+                        {item.itemName}
+                      </ItemLabel>
+                      <Percentage> {item.percentage} %</Percentage>
+                    </ItemSection>
+                    <Range
+                      rangeColor="#f9a109"
+                      name={item.itemName}
+                      value={item.percentage}
+                      readOnly
+                    ></Range>
+                  </div>
+                ))}
+            </TopSection>
+            <TopSection>
+              <TopTitle> Top Categories</TopTitle>
+              {totalCategoryRatioInPercentages
+                .slice(0, 3)
+                .sort(sortDescendant)
+                .map((item) => (
+                  <div key={`${item.category}ID`}>
+                    <ItemSection>
+                      <ItemLabel htmlFor={item.category}>
+                        {item.category}
+                      </ItemLabel>
+                      <Percentage> {item.percentage} %</Percentage>
+                    </ItemSection>
+                    <Range
+                      rangeColor="#56CCF2"
+                      name={item.category}
+                      value={item.percentage}
+                      readOnly
+                    ></Range>
+                  </div>
+                ))}
+            </TopSection>
+          </TopRanges>
+          <MonthlyChart>
+            <MonthlySummary> Monthly Summary </MonthlySummary>
+            <ResponsiveContainer width="100%" height={300}>
+              <LineChart
+                data={data}
+                margin={{ top: 5, right: 50, bottom: 0, left: -30 }}
+              >
+                <Line
+                  type="monotone"
+                  dataKey="numberOfItems"
+                  stroke="#F9A109"
+                />
+                <CartesianGrid stroke="#E0E0E0" strokeDasharray="5 5" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+              </LineChart>
+            </ResponsiveContainer>
+          </MonthlyChart>
+        </TopStatistics>
+      ) : (
+        <NoPreviousLists>
+          You do not have any previously saved lists!
+        </NoPreviousLists>
+      )}
     </MainSection>
   );
 }

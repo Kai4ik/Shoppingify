@@ -10,7 +10,7 @@ import { format } from "date-fns";
 import { setCurrentMainSection } from "../actions/sectionActions";
 import { changeListToShow } from "../actions/userActions";
 import { ListDate } from "./reusableElements";
-import { MainSection } from "./reusableElements";
+import { MainSection, NoPreviousLists } from "./reusableElements";
 import { populateAllHistoryLists } from "../helperFunctions/helperFunctions";
 
 const ListTitle = styled.h3`
@@ -100,29 +100,37 @@ export default function UserHistory() {
 
   return (
     <MainSection>
-      <ListTitle> Shopping History </ListTitle>
-      {allLists.map((listItem, index) => (
-        <ListSection key={`${listItem.listName}${index}ID`}>
-          <ListName> {listItem.listName} </ListName>
-          <DateSection>
-            <FontAwesomeIcon icon={faCalendarAlt} />
-            <ListDate>
-              {format(new Date(listItem.date), "EE, yyyy-MM-dd")}
-            </ListDate>
-          </DateSection>
-          <ListStatusAndDetails>
-            <ListStatus status={listItem.status}>
-              {listItem.status ? "completed" : "cancelled"}
-            </ListStatus>
-            <ListDetails>
-              <FontAwesomeIcon
-                icon={faChevronRight}
-                onClick={() => showSpecificList(listItem)}
-              />
-            </ListDetails>
-          </ListStatusAndDetails>
-        </ListSection>
-      ))}
+      {allLists.length > 0 ? (
+        <>
+          <ListTitle> Shopping History </ListTitle>
+          {allLists.map((listItem, index) => (
+            <ListSection key={`${listItem.listName}${index}ID`}>
+              <ListName> {listItem.listName} </ListName>
+              <DateSection>
+                <FontAwesomeIcon icon={faCalendarAlt} />
+                <ListDate>
+                  {format(new Date(listItem.date), "EE, yyyy-MM-dd")}
+                </ListDate>
+              </DateSection>
+              <ListStatusAndDetails>
+                <ListStatus status={listItem.status}>
+                  {listItem.status ? "completed" : "cancelled"}
+                </ListStatus>
+                <ListDetails>
+                  <FontAwesomeIcon
+                    icon={faChevronRight}
+                    onClick={() => showSpecificList(listItem)}
+                  />
+                </ListDetails>
+              </ListStatusAndDetails>
+            </ListSection>
+          ))}
+        </>
+      ) : (
+        <NoPreviousLists>
+          You do not have any previously saved lists!
+        </NoPreviousLists>
+      )}
     </MainSection>
   );
 }

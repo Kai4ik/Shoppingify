@@ -200,3 +200,10 @@ export const ErrorMessage = styled.p`
   margin: 10px 0;
   display: ${(props) => (props.showError ? "none;" : "block;")};
 `;
+
+export const NoPreviousLists = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 1.6rem;
+  margin-top: 15vh;
+`;
