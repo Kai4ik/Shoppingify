@@ -18,6 +18,9 @@ import { createUser } from "../actions/userActions";
 export default function SignUpPopUp(props) {
   const dispatch = useDispatch();
   const [emailError, setEmailError] = useState(true);
+  const [emailErrorMessage, setEmailErrorMessage] = useState(
+    "Field cannot be empty!"
+  );
   const [passwordMatchError, setPasswordMatchError] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
@@ -66,6 +69,7 @@ export default function SignUpPopUp(props) {
         });
       }
     } else {
+      setEmailErrorMessage("Account with such email already exists!");
       setEmailError(false);
     }
   };
@@ -91,7 +95,7 @@ export default function SignUpPopUp(props) {
             autoComplete="off"
           />
           <ErrorMessage showError={emailError}>
-            Account with such email already exists!
+            {emailErrorMessage}
           </ErrorMessage>
         </FormField>
         <FormField>

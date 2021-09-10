@@ -51,7 +51,10 @@ export default function LoginPopUp(props) {
           Cookies.set("token", response.data.token, { expires: 0.125 });
         } else {
           if (response.data.emailError) setEmailError(false);
-          if (response.data.passwordError) setPasswordError(false);
+          if (response.data.passwordError) {
+            setEmailError(true);
+            setPasswordError(false);
+          }
         }
       });
     }
