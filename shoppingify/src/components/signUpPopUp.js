@@ -65,11 +65,13 @@ export default function SignUpPopUp(props) {
             Cookies.set("token", response.data.token, { expires: 0.125 });
           } else {
             setEmailError(false);
+            setEmailErrorMessage("Account with such email already exists!");
           }
         });
       }
     } else {
-      setEmailErrorMessage("Account with such email already exists!");
+      if (formData.email !== "")
+        setEmailErrorMessage("Account with such email already exists!");
       setEmailError(false);
     }
   };
