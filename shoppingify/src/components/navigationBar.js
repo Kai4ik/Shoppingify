@@ -67,7 +67,7 @@ const MenuOption = styled.span`
   padding: 0.5rem;
   transition: border-left 0.3s linear;
   cursor: pointer;
-  outline: none;
+  -webkit-tap-highlight-color: transparent;
 
   @media (hover: hover) {
     &:hover {

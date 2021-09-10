@@ -157,7 +157,7 @@ const ChangeQtyBtn = styled.div`
   padding-right: ${(props) => props.paddingRight};
   cursor: pointer;
   font-size: 0.8rem;
-  outline: none;
+  -webkit-tap-highlight-color: transparent;
 `;
 
 const DeleteItem = styled.div`
