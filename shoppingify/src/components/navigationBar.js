@@ -67,12 +67,13 @@ const MenuOption = styled.span`
   padding: 0.5rem;
   transition: border-left 0.3s linear;
   cursor: pointer;
-  &:hover {
-    border-left: 10px solid #f9a109;
-  }
+  outline: none;
 
-  &:hover ${Tooltip} {
-    visibility: visible;
+  @media (hover: hover) {
+    border-left: 10px solid #f9a109;
+    ${Tooltip} {
+      visibility: visible;
+    }
   }
 `;
 
