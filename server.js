@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const db = require("./models/database");
-
 require("dotenv").config();
 
 // creating express app object
@@ -19,11 +18,6 @@ app.use(
     allowedHeaders: "Authorization, Content-Type",
   })
 );
-
-/*app.use((req, res, next) => {
-  res.append("Cache-Control", "max-age=31536000");
-  next();
-});*/
 
 const items = require("./routes/items");
 app.use("/api/items", jsonParser, items);
