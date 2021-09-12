@@ -23,6 +23,6 @@ Build with:
   * [body-parser](https://www.npmjs.com/package/body-parser)
   * [js-cookie](https://github.com/js-cookie/js-cookie) used to create cookie and send it to the front-end
 
-Preview of the website can be found in the [project wiki]()
+Preview of the website can be found in the [project wiki](https://github.com/Kai4ik/Shoppingify/wiki/Shoppingify)\
 Visit website - https://shoppingifyapp.herokuapp.com/
 
