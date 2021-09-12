@@ -25,6 +25,7 @@ export default function LoginPopUp(props) {
   });
   const [readyToLogin, setReadyToLogin] = useState(false);
 
+  // enables user to click "login" button in case both fields are filled out
   useEffect(() => {
     setReadyToLogin(
       formData.password !== "" && formData.email !== "" ? true : false
@@ -42,6 +43,12 @@ export default function LoginPopUp(props) {
     props.setSignUpMode(true);
   };
 
+  /* 
+  makes post request to the server:
+  - if user with such emails exists and has provided correct password, logs him in and creates "token" cookie using token that was created on the server side and send with the response 
+  - otherwise, server sends back response that contains info about what type of error occurred: whether user with given email does not exist or provided by user password is wrong
+  in both cases, error message will be displayed
+  */
   const login = () => {
     if (formData.email !== "" && formData.password !== "") {
       axios.post("api/users/login", formData).then((response) => {

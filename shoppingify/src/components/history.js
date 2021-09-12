@@ -87,6 +87,7 @@ export default function UserHistory() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // when user wants to see details of specific list and clicks "show arrow", sets details of that list
   const showSpecificList = (listItem) => {
     dispatch(setCurrentMainSection("historyList"));
     const specificList = {

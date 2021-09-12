@@ -130,8 +130,12 @@ export default function Statistics() {
     lastSixMonthStatistics = [],
     data = [],
     width = window.innerWidth;
+
+  // checks whether category of given product is already in "topCategories" array or not
+  // if found - returns index of element, otherwise - returns -1
   const foundCategory = (product) =>
     topCategories.findIndex((element) => element.category === product.category);
+
   const foundMonth = (list) =>
     lastSixMonthStatistics.findIndex(
       (element) => element.month === monthNames[new Date(list.date).getMonth()]
@@ -142,6 +146,11 @@ export default function Statistics() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // goes through all lists and through all products of each list
+  /* if category of given product is still not in "topCategories" array, adds new element to that array - 
+   object with 2 properties: name of category and number of items in it (initial is 1)
+   if category is already in the array, it just increases "numberOfItems" property for that category by one
+  */
   allLists.map((list) => {
     return list.listProducts.map((product) => {
       return foundCategory(product) === -1
@@ -153,6 +162,11 @@ export default function Statistics() {
     });
   });
 
+  // goes through all lists and through all products of each list
+  /* if product is still not in "topItems" array, adds new element to that array - 
+   object with 2 properties: name of product(item) and number of sales for that product
+   if item is already in the array, it just increases "numberOfSales" property for that product by one
+  */
   allLists.map((list) => {
     return list.listProducts.map((product) => {
       return findRequiredProductIndex(topItems, product) === -1

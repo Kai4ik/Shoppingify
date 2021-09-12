@@ -131,6 +131,7 @@ export default function AddItem() {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.items.categories);
 
+  // used to set new item's category if it was chosen from list of existing categories
   const chooseCategory = (e) =>
     setNewItemData({ ...newItemData, category: e.target.innerText });
 

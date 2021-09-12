@@ -136,6 +136,8 @@ export default function ItemsList() {
   const dispatch = useDispatch();
   const width = window.innerWidth;
 
+  // after component finished rendering, hook fetches data (all products) from database and updates "allProducts" property of global state
+  // also goes through products array and adds each new category (without duplicates) to temporary array with which we then update "categories" property of global state
   useEffect(() => {
     const populateNewCategories = [];
     axios.get("api/items").then((response) => {
@@ -154,6 +156,8 @@ export default function ItemsList() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [listProducts]);
 
+  // handleAddToList() checks whether product that user wants to add already in current shopping list or not.
+  // in case if not in the list, adds new product to the list, otherwise shows warning that item was already added before
   const handleAddToList = (item) => {
     if (findRequiredProductIndex(listProducts, item) === -1)
       addProductToList(dispatch, item);
